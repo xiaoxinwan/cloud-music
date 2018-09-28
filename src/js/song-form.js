@@ -80,19 +80,20 @@
             this.view.init()
             this.view.render(this.model.data)
             this.bindEvents()
-            window.eventHub.on('upload', (data) => {
-                this.view.render(data)
-            })
             window.eventHub.on('select', (data) => {
                 this.model.data = data
                 this.view.render(this.model.data)
             })
-            window.eventHub.on('new', () => {
-                this.model.data = {
-                    name: '',
-                    url: '',
-                    artist: '',
-                    id: ''
+            window.eventHub.on('new', (data) => {
+                if(this.model.data.id){
+                    this.model.data = {
+                        name: '',
+                        url: '',
+                        artist: '',
+                        id: ''
+                    }
+                }else{
+                    Object.assign(this.model.data, data)
                 }
                 this.view.render(this.model.data)
             })
