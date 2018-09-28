@@ -52,7 +52,6 @@
             this.bindEvents()
             this.getAllsongs()
             this.bindEventHub()
-            
         },
         getAllsongs() {
             return this.model.find().then(() => {
@@ -81,6 +80,9 @@
             window.eventHub.on('create', (songData) => {
                 this.model.data.songs.push(songData)
                 this.view.render(this.model.data)
+            })
+            window.eventHub.on('new', ()=>{
+                this.view.clearActive()
             })
         }
     }
