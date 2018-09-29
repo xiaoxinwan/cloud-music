@@ -1,6 +1,6 @@
 {
     let view = {
-        el: '.page > main',
+        el: '.page > .asideAndMain > main',
         init() {
             this.$el = $(this.el)
         },
@@ -51,7 +51,7 @@
             name: '',
             artist: '',
             url: '',
-            id: ''
+            id: '',
         },
         update(data) {
             var song = AV.Object.createWithoutData('Song', this.data.id)
@@ -125,24 +125,28 @@
                     window.eventHub.emit('create', object)
                 })
         },
-        update(){
+        update() {
             let needs = 'name artist url'.split(' ')
             let data = {}
             needs.map((string) => {
                 data[string] = this.view.$el.find(`[name = "${string}"]`).val()
             })
             this.model.update(data)
-                .then(()=>{
+                .then(() => {
                     window.eventHub.emit('update', JSON.parse(JSON.stringify(this.model.data)))
                 })
         },
         bindEvents() {
+            // this.view.$el.on('text','form',(e)=>{
+            //     e.preventDefault()
+               
+            // }),
             this.view.$el.on('submit', 'form', (e) => {
-                e.preventDefault()
 
+                e.preventDefault()
                 if(this.model.data.id){
                     this.update()
-                }else{
+                }else if(this.model.data.name){
                     this.create()
                 }
 
