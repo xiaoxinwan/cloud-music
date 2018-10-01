@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
 }
+
 *::before {
     box-sizing: border-box;
 }
@@ -9,16 +10,17 @@
 *::after {
     box-sizing: border-box;
 }
+
 a {
     color: inherit;
     text-decoration: none;
 }
 
-
 .page {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    position: relative;
     
 }
 
@@ -27,35 +29,37 @@ a {
     width: 100%;
     height: 100%;
     position: absolute;
-    background: transparent url(http://p1.music.126.net/Fg1jEgJXPwWfm_MOhsxNAg==/109951163032776975.jpg?imageView&thumbnail=360y360&quality=75&tostatic=0) no-repeat center;
+    background: transparent url(/img/jfla.jpeg) center center;
     background-size: cover;
-
     top: 0;
     left: 0;
-    filter: blur(6px)brightness(0.6);
+    filter: blur(1px)brightness(0.6);
     z-index: -1;
-} 
-.page .logo{
+}
+
+.page .logo {
     position: absolute;
     width: 92px;
     height: 17px;
     left: 9px;
-    top:12px;
+    top: 12px;
 }
 
 .disc-container {
     position: relative;
     width: 100%;
 }
-.disc-container .icon-wrapper{
+
+.disc-container .icon-wrapper {
     position: absolute;
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
-    height: 20%;
-    width: 20%;
+    border: 1px solid white;
+    border-radius: 50%;
+    height: 14.5%;
+    width: 14.5%;
 }
 
 .disc-container .pointer {
@@ -86,60 +90,69 @@ a {
     border-radius: 50%;
 }
 
-.song-description{
+.song-description {
     flex-grow: 1;
     color: #fefefe;
     text-align: center;
     line-height: 2;
     margin-top: 20px;
 }
-.song-description h1{
+
+.song-description h1 {
     color: white;
     font-size: 18px;
 }
-.song-description p{
+
+.song-description p {
     font-size: 14px;
     line-height: 24px;
 }
-.song-description .lines{
+
+.song-description .lines {
     transition: transform 0.3s;
 }
-.song-description .lyric{
+
+.song-description .lyric {
     height: 8%;
     overflow: hidden;
 }
-.song-description p.active{
+
+.song-description p.active {
     color: white;
 }
 
-.page > .links{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333333;
+.page>.links {
     position: absolute;
-    bottom: 9px;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    z-index: 20;
 }
-
-.page>.links > a{
-
+.page > .links .links-wrapper{
     display: flex;
-    width: 150px;
-    height: 40px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border: 1px solid red;
-    background: transparent;
-    padding: 3px;
-    margin: 20px;
-    color: inherit;
-    text-decoration: none;
-    border-radius: 40px;
-    letter-spacing: 1%;
-    
+    padding: 0 10px;
+    margin: 0 auto;
 }
-.links > a.main{
-    background: #333333;
+
+
+.page >.links a {
+    box-flex: 1;
+    flex: 1 1 auto;
+    width: 10%;
+    border: 1px solid #d33a31;
+    margin-left: 10px;
+    height: 40px;
+    line-height: 40px;
+    background-color: transparent;
+    padding: 0 6px;
+    border-radius: 40px;
+    font-size: 18px;
+    text-align: center;
+    color: #d33a31;
+	
+}
+.links a.main {
+    background: #d33a31;
     color: white;
+    
 }
