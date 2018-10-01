@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+*::before {
+    box-sizing: border-box;
+}
+
+*::after {
+    box-sizing: border-box;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    
+}
+
+.page::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: transparent url(http://p1.music.126.net/Fg1jEgJXPwWfm_MOhsxNAg==/109951163032776975.jpg?imageView&thumbnail=360y360&quality=75&tostatic=0) no-repeat center;
+    background-size: cover;
+
+    top: 0;
+    left: 0;
+    filter: blur(6px)brightness(0.6);
+    z-index: -1;
+} 
+.page .logo{
+    position: absolute;
+    width: 92px;
+    height: 17px;
+    left: 9px;
+    top:12px;
+}
+
+.disc-container {
+    position: relative;
+    width: 100%;
+}
+.disc-container .icon-wrapper{
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    height: 20%;
+    width: 20%;
+}
+
+.disc-container .pointer {
+    position: absolute;
+    width: 24.5%;
+    left: 45%;
+}
+
+.disc-container .disc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18%;
+}
+
+.disc-container .ring {
+    width: 79.2%;
+}
+
+.disc-container .light {
+    width: 79.2%;
+    position: absolute;
+}
+
+.disc-container .cover {
+    width: 50%;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.song-description{
+    flex-grow: 1;
+    color: #fefefe;
+    text-align: center;
+    line-height: 2;
+    margin-top: 20px;
+}
+.song-description h1{
+    color: white;
+    font-size: 18px;
+}
+.song-description p{
+    font-size: 14px;
+    line-height: 24px;
+}
+.song-description .lines{
+    transition: transform 0.3s;
+}
+.song-description .lyric{
+    height: 8%;
+    overflow: hidden;
+}
+.song-description p.active{
+    color: white;
+}
+
+.page > .links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333333;
+    position: absolute;
+    bottom: 9px;
+}
+
+.page>.links > a{
+
+    display: flex;
+    width: 150px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid red;
+    background: transparent;
+    padding: 3px;
+    margin: 20px;
+    color: inherit;
+    text-decoration: none;
+    border-radius: 40px;
+    letter-spacing: 1%;
+    
+}
+.links > a.main{
+    background: #333333;
+    color: white;
+}
