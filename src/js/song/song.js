@@ -7,7 +7,8 @@
             $(this.el).find('.bg').css('background', `url(${song.cover})`)
             $(this.el).find('#cover').attr('src', song.cover)
             if ($(this.el).find('audio').attr('src') !== song.url) {
-                $(this.el).find('audio').attr('src', song.url)
+                let audio = $(this.el).find('audio').attr('src', song.url).get(0)
+                audio.onended = () => { window.eventHub.emit('songEnd') }
             }
             if (status === 'playing') {
                 $(this.el).find('.disc-container').addClass('playing')
@@ -46,15 +47,17 @@
         init(view, model) {
             this.view = view
             this.model = model
-
             let id = this.getSongId()
             this.model.get(id).then(() => {
 
                 this.view.render(this.model.data)
                 this.view.play()
             })
-
             this.bindEvents()
+            window.eventHub.on('songEnd', ()=>{
+                this.model.data.status = 'paused'
+                this.view.render(this.model.data)
+            })
 
         },
         bindEvents() {
@@ -68,6 +71,7 @@
                 this.model.data.status = 'playing'
                 this.view.render(this.model.data)
                 this.view.play()
+                console.log(this.model.data.status)
             })
         },
         getSongId() {
