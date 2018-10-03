@@ -1,36 +1,44 @@
 {
     let view = {
         el: '#app',
-        template: `
-            <audio autoplay src={{url}}></audio>
-            <div>
-                <button class="play">播放</button>
-                <button class="pause">暂停</button>
-            </div>
-        `,
-        render(data){
-            $(this.el).html(this.template.replace('{{url}}',data.url))
+        render(data) {
+            let { song, status } = data
+
+            $(this.el).find('.bg').css('background', `url(${song.cover})`)
+            $(this.el).find('#cover').attr('src', song.cover)
+            if ($(this.el).find('audio').attr('src') !== song.url) {
+                $(this.el).find('audio').attr('src', song.url)
+            }
+            if (status === 'playing') {
+                $(this.el).find('.disc-container').addClass('playing')
+            } else {
+                $(this.el).find('.disc-container').removeClass('playing')
+            }
         },
-        play(){
+        play() {
             $(this.el).find('audio')[0].play()
         },
-        pause(){
+        pause() {
             $(this.el).find('audio')[0].pause()
         }
-
     }
     let model = {
         data: {
-            id: '',
-            name: '',
-            artist: '',
-            url: ''
+            song: {
+                id: '',
+                name: '',
+                artist: '',
+                url: '',
+            },
+            status: 'playing'
         },
-        get(id){
+        get(id) {
             var query = new AV.Query('Song')
-            return query.get(id).then((song)=>{
-                Object.assign(this.data, {id: song.id, ...song.attributes})
+            return query.get(id).then((song) => {
+
+                Object.assign(this.data.song, { id: song.id, ...song.attributes })
                 return song
+
             })
         }
     }
@@ -38,18 +46,28 @@
         init(view, model) {
             this.view = view
             this.model = model
+
             let id = this.getSongId()
-            this.model.get(id).then(()=>{
+            this.model.get(id).then(() => {
+
                 this.view.render(this.model.data)
-            })
-            this.bindEvents()
-        },
-        bindEvents(){
-            $(this.view.el).on('click', '.play',()=>{
                 this.view.play()
             })
-            $(this.view.el).on('click', '.pause', ()=>{
+
+            this.bindEvents()
+
+        },
+        bindEvents() {
+            $(this.view.el).on('click', '.cover', () => {
+                this.model.data.status = 'pasued'
+                this.view.render(this.model.data)
                 this.view.pause()
+                console.log(this.model.data.status)
+            })
+            $(this.view.el).on('click', '.icon-wrapper', () => {
+                this.model.data.status = 'playing'
+                this.view.render(this.model.data)
+                this.view.play()
             })
         },
         getSongId() {

@@ -10,7 +10,9 @@
 </head>
 
 <body>
-    <div class="page">
+    <div class="page" id="app">
+        <div class="bg"></div>
+        <audio src="#"></audio>
         <div class="disc-container">
             <div class="logo">
                 <svg class="u-svg u-svg-logosong" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184 34" data-reactid="11">
@@ -49,15 +51,17 @@
             <img src="/img/pointer.png" alt="" class="pointer">
             <div class="disc">
                 <div class="icon-wrapper">
-
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-play1"></use>
+                    </svg>
                 </div>
                 <img src="/img/disc-black.png" alt="" class="ring">
                 <img src="/img/light.png" alt="" class="light">
-                <img src="/img/jfla.jpeg" alt="" class="cover">
+                <img src="/img/jfla.jpeg" alt="" id="cover"class="cover">
             </div>
         </div>
         <div class="song-description">
-            <h1></h1>
+            <h1>岁月神偷-金玟岐</h1>
             <div class="lyric">
                 <div class="lines">
 
@@ -75,7 +79,8 @@
 
 
 
-
+    <script src="//at.alicdn.com/t/font_857551_d5p98ka4y8r.js
+    "></script>
     <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
     <script src="./js/initializers/av.js"></script>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
