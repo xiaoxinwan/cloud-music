@@ -46,12 +46,11 @@ a {
     height: 150%;
     position: absolute;
     background: transparent url(/img/jfla.jpeg);
-    background-size:cover;
+    background-size: cover;
     top: 0;
     left: 0;
     bottom: -20px;
     right: -20px;
-    
     filter: blur(8px)brightness(0.5);
     z-index: -1;
 }
@@ -111,39 +110,50 @@ a {
     animation-play-state: paused;
 }
 
-
-.disc-container.playing .icon-wrapper{
+.disc-container.playing .icon-wrapper {
     display: none;
 }
-.disc-container.playing  .cover {
+
+.disc-container.playing .cover {
     animation-play-state: running;
 }
 
-
 .song-description {
     flex-grow: 1;
-    color: #fefefe;
+    color: #AEABAC;
     text-align: center;
     line-height: 2;
     margin-top: 20px;
 }
 
-.song-description h1 {
-    color: white;
-    font-size: 18px;
+.song-description .song-information {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.song-description p {
-    font-size: 14px;
-    line-height: 24px;
+.song-description .song-information .songname {
+    color: white;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+}
+
+.song-description .song-information .artist {
+    font-size: 16px;
+    font-weight: 400;
+    padding-top: 1px;
+    color: hsla(0, 0%, 100%, .6);
 }
 
 .song-description .lines {
     transition: transform 0.3s;
+    
 }
 
 .song-description .lyric {
-    height: 8%;
+    margin-top: 4px;
+    height: 88px;
     overflow: hidden;
 }
 
