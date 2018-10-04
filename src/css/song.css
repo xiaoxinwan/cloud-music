@@ -32,27 +32,35 @@ a {
         transform: rotate(360deg)
     }
 }
+.noscroll,
+.noscroll body {
+    overflow: hidden;
+}
+.noscroll body {
+    position: relative;
+}
 
 .page {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    position: relative;
+    overflow: hidden;
 }
 
-.bg {
+.page .bg {
     content: '';
-    width: 100%;
-    height: 150%;
+    width: 110%;
+    height: 110%;
     position: absolute;
     background: transparent url(/img/jfla.jpeg);
     background-size: cover;
-    top: 0;
-    left: 0;
-    bottom: -20px;
-    right: -20px;
-    filter: blur(8px)brightness(0.5);
+    
+    left: -20px;
+    top: -20px;
+
+    filter: blur(8px)brightness(0.4);
     z-index: -1;
+    
 }
 
 .page .logo {

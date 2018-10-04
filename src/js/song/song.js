@@ -1,10 +1,14 @@
 {
     let view = {
         el: '#app',
+        init(){
+            this.play()
+        },
         render(data) {
             let { song, status } = data
 
-            $(this.el).find('.bg').css('background', `url(${song.cover})`)
+            $(this.el).find('.bg').css('background', `transparent url(${song.cover}) center`)
+            $(this.el).find('.bg').css('background-size', 'cover')
             $(this.el).find('#cover').attr('src', song.cover)
 
             if ($(this.el).find('audio').attr('src') !== song.url) {
@@ -77,7 +81,9 @@
 
         },
         play() {
+            
             $(this.el).find('audio')[0].play()
+            
         },
         pause() {
             $(this.el).find('audio')[0].pause()
@@ -91,7 +97,7 @@
                 artist: '',
                 url: '',
             },
-            status: 'playing'
+            status: 'paused'
         },
         get(id) {
             var query = new AV.Query('Song')
@@ -107,11 +113,14 @@
         init(view, model) {
             this.view = view
             this.model = model
+            
             let id = this.getSongId()
             this.model.get(id).then(() => {
-
+                
+                
                 this.view.render(this.model.data)
-                this.view.play()
+                
+                
             })
             this.bindEvents()
             window.eventHub.on('songEnd', () => {
