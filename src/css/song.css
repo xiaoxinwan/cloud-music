@@ -52,7 +52,7 @@ a {
     width: 110%;
     height: 110%;
     position: absolute;
-    background: transparent url(/img/jfla.jpeg);
+    background: transparent url(/img/bg_default.png) center center;
     background-size: cover;
     
     left: -20px;

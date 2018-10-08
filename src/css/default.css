@@ -34,7 +34,6 @@ body {
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
-
  }
 
 /* layout */
@@ -125,6 +124,7 @@ body {
     background: #ddd;
     padding-left: 40px;
     padding-top: 20px;
+    min-height: 480px;
 }
 
 .form {

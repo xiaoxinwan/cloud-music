@@ -1,4 +1,6 @@
 {
+    
+
     let view = {
         el: '#app',
         init(){
@@ -6,7 +8,6 @@
         },
         render(data) {
             let { song, status } = data
-
             $(this.el).find('.bg').css('background', `transparent url(${song.cover}) center`)
             $(this.el).find('.bg').css('background-size', 'cover')
             $(this.el).find('#cover').attr('src', song.cover)
