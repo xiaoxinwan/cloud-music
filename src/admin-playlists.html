@@ -57,24 +57,30 @@
                 init() {
                     this.$el = $(this.el)
                     this.$form = this.$el.find('form')
-
                 }
             }
             let model = {
+                data: {
+                    name:'',
+                    cover:'',
+                    summary:'',
+                    id:'',
+                },
                 create(data) {
-                    var Songlists = AV.Object.extend('songlists')
+
+                    var Songlists = AV.Object.extend('Playlist')
                     var songlists = new Songlists()
-                    songlists.set('name',data.name)
-                    songlists.set('summary',data.summary)
-                    songlists.set('cover',data.cover)
-                    
-                    songlists.save().then((newSonglist)=>{
-                        console.log(newSonglist.id)
-                        console.log(newSonglist.attributes)
-                    },(error)=>{
-                        console.log(error)
+                    songlists.set('name', data.name)
+                    songlists.set('summary', data.summary)
+                    songlists.set('cover', data.cover)
+                    return songlists.save().then((newsonglist) => {
+                        let {id, attributes} = newsonglist
+                        Object.assign(this.data,{
+                            id, ...attributes
+                        })
                     })
-                }
+                },
+                
             }
             let controller = {
                 init(view, model) {
@@ -88,14 +94,19 @@
                         e.preventDefault()
                         let form = this.view.$form.get(0)
                             //    console.log(form.name.value.trim())
-                            //    console.log(form.summary.value.trim())
+                        //    console.log(form.summary.value.trim())
                         let keys = ['name', 'summary', 'cover']
                         let data = {}
                         keys.reduce((prev, item) => {
-                            prev[item] = form[item].value.trim()
+                            prev[item] = form[item].value
                             return prev
                         }, data)
-                        this.model.create(data)
+                        this.model.create(data).then(()=>{
+                            
+                            window.location.href = "./admin.html?id=" + this.model.data.id
+                        
+                        })
+                        
                     })
                 }
 

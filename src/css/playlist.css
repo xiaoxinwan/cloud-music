@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+* {
+    box-sizing: border-box;
+}
+*::after {
+    box-sizing: border-box;
+}
+*::before {
+    box-sizing: border-box;
+}
+ul,
+ol {
+    list-style: none;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+body {
+    font-size: 12px;
+    line-height: 1.5;
+}
+.icon {
+    width: 22px; height: 22px;
+    vertical-align: -0.15em;
+    fill: rgb(170, 170, 170);
+    overflow: hidden;
+ }
+/* header */
+.playlist-header{
+    position: relative;
+    padding: 30px 10px;
+    overflow: hidden;
+}
+.playlist-header-bg{
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url(/img/eason1.jpg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(10px);
+    height: 170px;
+    transform: scale(1.5); /* 这样使filter的白边没那么严重 记住父元素加overflow:hidden*/
+
+}
+.playlist-header-wrapper{
+    display: flex;
+    position: relative;
+    z-index: 2;
+    
+    align-items: flex-start;
+    overflow: hidden;
+}
+.playlist-header-wrapper .head img{
+    width: 126px;
+    height: 126px;
+}
+.playlist-header-wrapper .head > .imgicon{
+    
+    background: rgba(217, 48, 48, .8);
+    position: absolute;
+    top:10px;
+    left: -5px;
+    padding-left: 10px;
+    padding-right: 5px;
+    border-radius: 10px;
+    color: white;
+}
+.playlist-header-wrapper .title{
+    margin-top: 25px;
+    margin-left: 20px;
+    font-size: 17px;
+    color: white;
+}
+.summary{
+    padding-top: 10px;
+    margin: 0  10px;
+    line-height: 19px;
+    color:#666;
+}
+.summary span{
+    
+}
+h4{
+    background: #eeeff0;
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 23px;
+    height: 23px;
+}
+h4 span{
+    margin:0px 10px;
+    color: #666;
+}
+.songlists ul > li{
+    display: flex;
+}
+.songlists ul > li >.number {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+}
+.songlists ul > li >.song {
+    flex-grow: 1;
+    display: flex;
+    border-bottom: 1px solid #eeeff0;
+    margin: 5px 0;
+    padding-bottom: 5px;
+}
+.songlists ul > li >.song >.song-wrapper{
+    flex-grow: 1;
+}
+.songlists ul > li > .song >.song-wrapper .name{
+    font-size: 17px;
+    color: #333;
+}
+.songlists ul > li > .song >.song-wrapper .artist{
+    font-size: 12px;
+    color: #888;
+}
+.songlists ul > li > .song > .touch-icon{
+    margin: auto;
+    padding-right: 10px;
+}
+.foot{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    background: #fff;
+    border-top: 1px solid #eeeff0;
+}
+.foot .foot-wrapper{
+    background: rgb(211, 58, 49);
+    border-radius: 36px;
+    display: flex;
+    justify-content: center;
+    margin:5px 30px;
+}
+.foot .foot-wrapper> span{
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: white;
+}

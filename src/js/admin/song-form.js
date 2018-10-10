@@ -73,7 +73,8 @@
             song.set('artist', data.artist)
             song.set('url', data.url)
             song.set('cover', data.cover)
-            song.set('lyric', data.lyric)            
+            song.set('lyric', data.lyric)       
+            console.log(this.data.id)     
             return song.save().then((response) => {
                 Object.assign(this.data, data)
                 return response
@@ -86,8 +87,10 @@
             song.set('artist', data.artist);
             song.set('url', data.url);
             song.set('cover', data.cover)
-            song.set('lyric', data.lyric)                        
+            song.set('lyric', data.lyric)
+                                 
             return song.save().then((newSong) => {
+                console.log(newSong)
                 let {
                     id,
                     attributes
@@ -99,6 +102,10 @@
             }, (error) => {
                 console.error(error);
             });
+        },
+        get(id){
+            var query = new AV.Query('Playlist')
+            return query.get(id).then((playlist)=>{})
         }
     }
     let controller = {
@@ -161,20 +168,33 @@
                
             // }),
             this.view.$el.on('submit', 'form', (e) => {
-
                 e.preventDefault()
                 if(this.model.data.id){
                     this.update()
                 }else if(this.model.data.name){
                     this.create()
                 }
-
-
-
-
             })
 
 
+        },
+        getListId() {
+            let search = window.location.search
+            if (search.indexOf('?') === 0) {
+                search = search.substring(1)
+            }
+            let array = search.split('&').filter((v => v))
+            let id = ''
+            for (let i = 0; i < array.length; i++) {
+                let kv = array[i].split('=')
+                let key = kv[0]
+                let value = kv[1]
+                if (key === 'id') {
+                    id = value
+                    break
+                }
+            }
+            return id
         }
     }
     controller.init(view, model)
